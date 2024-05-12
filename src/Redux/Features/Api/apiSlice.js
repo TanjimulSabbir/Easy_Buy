@@ -1,11 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchBaseQuery } from "@reduxjs/toolkit/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-
-export const apiSlice = createSlice({
+export const apiSlice = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
-        baseUrl: "https://summerfield.store/",
+        baseUrl: "https://summerfield.store",
         prepareHeaders: async (headers, { getState, endpoint }) => {
             const token = getState().auth?.accessToken;
             console.log(token, "from apiSlice")
@@ -17,4 +15,4 @@ export const apiSlice = createSlice({
     }),
     tagTypes: [],
     endpoints: (builder) => ({})
-})
+});

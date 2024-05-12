@@ -11,4 +11,4 @@ const productApi = apiSlice.injectEndpoints({
     })
 })
 
-// export const { } = productApi
+const { useGetProductsQuery } = productApi;
