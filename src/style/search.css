@@ -1,0 +1,10 @@
+.menu-icon+.custom-category__main {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-icon:hover+.custom-category__main {
+    display: block;
+    opacity: 1;
+}

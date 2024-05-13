@@ -2,7 +2,8 @@
 import { useGetProductsQuery } from "../../../Redux/Features/Products/productApi";
 import Error from "../../../UI/Error";
 import Loading from "../../../UI/Loading";
-import { CategoriesDropDown } from "../../../utils/CategoriesDropDown";
+import CategoriesDropDown from "../../../utils/CategoriesDropDown";
+
 import Product from "./Product/Product";
 
 export default function Products() {
@@ -18,6 +19,6 @@ export default function Products() {
     }
 
     return (
-        <div>{CategoriesDropDown}</div>
+        <div>{}</div>
     )
 }
