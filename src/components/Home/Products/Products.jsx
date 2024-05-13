@@ -3,6 +3,7 @@ import { useGetProductsQuery } from "../../../Redux/Features/Products/productApi
 import Error from "../../../UI/Error";
 import Loading from "../../../UI/Loading";
 import CategoriesDropDown from "../../../utils/CategoriesDropDown";
+import Sidebar from "../../Sidebar/Sidebar";
 
 import Product from "./Product/Product";
 
@@ -18,7 +19,13 @@ export default function Products() {
         content = allProducts.products.map(product => <Product key={product.id} product={product} />)
     }
 
+    console.log(allProducts?.products)
     return (
-        <div>{}</div>
+        <div className="flex">
+            <Sidebar />
+            <div className="max-w-[80%] px-5 grid grid-cols-4 gap-5">
+                {content}
+            </div>
+        </div>
     )
 }
