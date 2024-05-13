@@ -11,8 +11,10 @@ export default function Products() {
     if (!isLoading && isError || allProducts?.products?.length === 0) content = <Error message="Product(s) not found!" />;
 
     if (!isLoading && !isError && allProducts?.products?.length > 0) {
+        const allCategores=allProducts.products.map(product=>product)
         content = allProducts.products.map(product => <Product key={product.id} product={product} />)
     }
+    
     return (
         <div>Products: {content}</div>
     )
