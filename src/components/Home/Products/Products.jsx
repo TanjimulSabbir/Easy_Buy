@@ -23,7 +23,7 @@ export default function Products() {
     return (
         <div className="flex">
             <Sidebar />
-            <div className="max-w-[80%] px-5 grid grid-cols-4 gap-5">
+            <div className="max-w-[80%] px-5 grid grid-cols-4 items-stretch gap-5">
                 {content}
             </div>
         </div>

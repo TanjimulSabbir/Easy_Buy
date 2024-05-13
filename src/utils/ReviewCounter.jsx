@@ -1,7 +1,7 @@
 import { IoStarOutline } from "react-icons/io5";
 import { MdOutlineStarPurple500 } from "react-icons/md";
 
-export default function ReviewCounter(reviewNum) {
+export default function ReviewCounter({ reviewNum }) {
     const filledStars = Array.from({ length: 5 }, (_, index) => {
         if (reviewNum === 5 || index < reviewNum) {
             return <MdOutlineStarPurple500 key={index} className="text-yellow-500" />;
@@ -12,7 +12,8 @@ export default function ReviewCounter(reviewNum) {
 
     return (
         <div className="flex items-center space-x-1">
-            {filledStars}
+            <span className="flex items-center">  {filledStars}</span>
+            <span> ({reviewNum} Reviews)</span>
         </div>
     );
 };
