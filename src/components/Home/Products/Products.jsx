@@ -13,12 +13,8 @@ export default function Products() {
     if (!isLoading && isError || allProducts?.products?.length === 0) content = <Error message="Product(s) not found!" />;
 
     if (!isLoading && !isError && allProducts?.products?.length > 0) {
-        // const allCategores = allProducts.products.map(product => ({ category: product.category.cat, subCategory: product.category.sub, immediate: product.category.imd }))
-        // console.log(allCategores, "from products page")
         content = allProducts.products.map(product => <Product key={product.id} product={product} />)
     }
-
-    console.log(allProducts?.products)
     return (
         <div className="flex">
             <Sidebar />

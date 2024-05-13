@@ -21,7 +21,6 @@ export default function Product({ product }) {
                     </Link>
                     <ReviewCounter reviewNum={5} />
                     <p className="flex items-center space-x-1
-                    
                     mt-1">
                         <span>৳{selling_price}</span>
                         <del>{marked_price}</del>

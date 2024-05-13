@@ -16,4 +16,4 @@ export default function ReviewCounter({ reviewNum }) {
             <span> ({reviewNum} Reviews)</span>
         </div>
     );
-};
+}
