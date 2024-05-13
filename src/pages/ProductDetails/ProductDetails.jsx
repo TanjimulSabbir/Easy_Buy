@@ -23,16 +23,18 @@ export default function ProductDetails({ product }) {
         warranty
     } = product;
     const [quantity, setQuantity] = useState(1);
-    const [imagePath, setImagePath] = useState({ large: images[0]?.image, small: images[0]?.thumb });
+    const [imagePath, setImagePath] = useState(images[0]);
+    const [color, setColor] = useState(images[0].color)
 
     const handleQuantityChange = (amount) => {
         setQuantity((prevQuantity) => Math.max(prevQuantity + amount, 1));
     };
 
-    const handleImage = (imageId) => {
+    const handleImage = ({ imageId, color }) => {
         const matchedItem = images.find(item => item.index === imageId)
         if (matchedItem !== -1) {
-            setImagePath({ large: matchedItem, small: matchedItem })
+            setImagePath(matchedItem)
+            setColor(variants.find(item => item.image === imageId).color)
         }
     }
 
@@ -42,11 +44,12 @@ export default function ProductDetails({ product }) {
             <div className="flex items-center">
                 <div className="w-[10%]">
                     {images.map(item => (<img key={item.index}
-                        className={item.thumb === imagePath.small.thumb && "border border-green-500"}
+                        onClick={() => handleImage({ imageId: item.index })}
+                        className={`cursor-pointer ${item.thumb === imagePath.thumb && "border border-green-500"}`}
                         src={`https://api.zonesparks.com${item.thumb}`} alt="" srcSet="" />))}
                 </div>
                 <div className="w-[90%]">
-                    <img src={`https://api.zonesparks.com${imagePath.large.image}`} alt="" srcSet="" />
+                    <img src={`https://api.zonesparks.com${imagePath.image}`} alt="" srcSet="" />
                 </div>
             </div>
             <div>
@@ -61,10 +64,10 @@ export default function ProductDetails({ product }) {
                     <h5>Choose Size</h5>
                     <p>{variants.map(item => item.size)}</p>
 
-                    <h5>Choose Color</h5>
+                    <h5>Choose Color: <span className="lobster-two-bold">{color}</span></h5>
                     <div className="flex space-x-2">
                         {variants.map((item, index) => (
-                            <div key={index} title={item.color} className={`w-11 h-11 rounded-xl cursor-pointer ${item.image}`} onMouseOver={() => handleImage(item.image)} style={{ backgroundColor: item.color }}></div>
+                            <div key={index} title={item.color} className={`w-11 h-11 rounded-xl cursor-pointer ${item.image === imagePath.index && "ring-2 ring-emerald-600"}`} onMouseOver={() => handleImage({ imageId: item.image, color: item.color })} style={{ backgroundColor: item.color }}></div>
                         ))}
                     </div>
 
