@@ -1,0 +1,9 @@
+/* Extra small devices (phones, 0px to 575.98px) */
+@media screen and (max-width: 600px) {
+  p,span{
+    font-size: 12px;
+  }
+  h1,h2{
+    font-size: 16px;
+  }
+}

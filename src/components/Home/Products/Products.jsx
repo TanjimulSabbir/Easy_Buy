@@ -2,7 +2,6 @@
 import { useGetProductsQuery } from "../../../Redux/Features/Products/productApi";
 import Error from "../../../UI/Error";
 import Loading from "../../../UI/Loading";
-import CategoriesDropDown from "../../../utils/CategoriesDropDown";
 import Sidebar from "../../Sidebar/Sidebar";
 
 import Product from "./Product/Product";
@@ -23,7 +22,7 @@ export default function Products() {
     return (
         <div className="flex">
             <Sidebar />
-            <div className="max-w-[80%] px-5 grid grid-cols-4 items-stretch gap-5">
+            <div className="md:max-w-[80%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-stretch gap-5">
                 {content}
             </div>
         </div>

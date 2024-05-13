@@ -11,7 +11,7 @@ export default function Search() {
     }
     console.log(searchInput,"searchInput")
     return (
-        <div className="w-2/3 md:w-1/3 md:mx-auto">
+        <div className="w-[90%] md:w-1/3 mx-auto">
             <div className="relative">
                 <input type="search" id="search-dropdown" className="block p-4 w-full z-20 text-sm bg-gray-50 rounded-lg border-gray-50 border  focus:ring-blue-500 focus:border-blue-500 dark:bg-white  dark:border-gray-200 dark:placeholder-[#090909cd] dark:text-black dark:focus:border-blue-500" placeholder="Search products..." required onChange={handleInput} />
 

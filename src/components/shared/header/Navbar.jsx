@@ -11,21 +11,21 @@ function Navbar() {
                 <Search />
             </div>
 
-            <div className="md:max-w-[40%] flex justify-center border space-x-7">
+            <div className="md:max-w-[40%] flex justify-center justify-around space-x-3 md:space-x-7">
                 {/* Favorite */}
                 <div>
                     <div className="indicator cursor-pointer">
-                        <GrFavorite className='w-7 h-7 font-thin' />
-                        <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-blue-500 rounded-full -top-2 -end-2 dark:border-gray-900">8</div>
+                        <GrFavorite className='text-xg md:text-3xl font-thin' />
+                        <div className="absolute inline-flex items-center justify-center w-3 h-3 md:w-6 md:h-6 text-xs font-bold text-white bg-blue-500 rounded-full -top-2 -end-2 dark:border-gray-900">8</div>
                     </div>
                     <p className='text-xs'>wishlist</p>
                 </div>
                 
                 {/* Cart */}
                 <div>
-                    <div className="indicator cursor-pointer">
-                        <BsCart3 className='w-7 h-7 font-thin' />
-                        <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-blue-500 rounded-full -top-2 -end-2 dark:border-gray-900">8</div>
+                    <div className="indicator cursor-pointer -mt-3 md:-mt-0">
+                        <BsCart3 className='text-xl md:text-2xl font-thin' />
+                        <div className="absolute inline-flex items-center justify-center w-3 h-3 md:w-6 md:h-6 text-xs font-bold text-white bg-blue-500 rounded-full -top-2 -end-2 dark:border-gray-900">8</div>
                     </div>
                     <p className='text-xs'>cart</p>
                 </div>
