@@ -9,14 +9,14 @@ export default function Product({ product }) {
     } = product;
 
     return (
-        <div className="productCard flex flex-grow">
-            <div className="relative bg-white shadow-lg rounded-lg border border-gray-200 ">
-                <Link to={`product/${id}`}>
-                    <img className="border-b border-gray-300" src={`https://api.zonesparks.com${images[0].thumb}`} alt="" />
+        <div className="productCard flex flex-grow items-center mx-3">
+            <div className="relative bg-white shadow-lg rounded-lg border border-gray-200">
+                <Link to={`/product/${id}`}>
+                    <img className="w-full flex items-center justify-center border-b border-gray-300" src={`https://api.zonesparks.com${images[0].thumb}`} alt="" />
                 </Link>
                 <p className="text-xs opacity-50 text-center mt-1">{cat}</p>
                 <div className="p-5 mt-auto">
-                    <Link to={`product/${id}`}>
+                    <Link to={`/product/${id}`}>
                         <h5 className="tracking-tight text-black capitalize">{title}</h5>
                     </Link>
                     <ReviewCounter reviewNum={5} />

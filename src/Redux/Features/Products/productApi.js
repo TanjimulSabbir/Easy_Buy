@@ -8,6 +8,11 @@ const productApi = apiSlice.injectEndpoints({
                 url: `/products/`
             })
         }),
+        getRelatedProducts: builder.query({
+            query: (id) => ({
+                url: `/products/related-product/${id}/`
+            })
+        }),
         getSpecifiedProduct: builder.query({
             query: (id) => ({
                 url: `/products/${id}`
@@ -21,4 +26,4 @@ const productApi = apiSlice.injectEndpoints({
     })
 })
 
-export const { useGetProductsQuery, useGetSpecifiedProductQuery, useGetFilteredProductsQuery } = productApi;
+export const { useGetProductsQuery, useGetRelatedProductsQuery, useGetSpecifiedProductQuery, useGetFilteredProductsQuery } = productApi;

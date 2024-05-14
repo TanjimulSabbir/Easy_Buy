@@ -4,6 +4,7 @@ import Loading from "../../UI/Loading";
 import Error from "../../UI/Error";
 import ProductDetails from "./ProductDetails";
 import "../../style/productDetails.css"
+import RelatedProducts from "./RelatedProducts";
 
 export default function ProductDetailsHome() {
     const productId = useParams().id;
@@ -16,6 +17,7 @@ export default function ProductDetailsHome() {
         <div className="py-14">
             {data?.id ? <>
                 <ProductDetails product={data} />
+                <RelatedProducts id={productId} />
             </> : content}
         </div>
     )

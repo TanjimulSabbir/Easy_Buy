@@ -4,7 +4,9 @@ import './index.css'
 import { RouterProvider } from 'react-router-dom'
 import router from './Layout/Routes'
 import { Provider } from 'react-redux'
-import store from './app/store'
+import store from './app/store';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
