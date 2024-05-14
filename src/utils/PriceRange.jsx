@@ -4,7 +4,7 @@ import Slider from '@mui/material/Slider';
 
 export default function RangeSlider() {
     const minPrice = 0;
-    const maxPrice = 1000; // Example max value
+    const maxPrice = 1000;
 
     return (
         <Box>

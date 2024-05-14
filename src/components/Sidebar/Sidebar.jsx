@@ -16,8 +16,6 @@ export default function Sidebar() {
             <SubCategories />
             <h1 className='my-4 text-center text-lg font-bold'>Brand</h1>
             <Brand />
-            <h1 className='my-4 text-center text-lg font-bold'>Price</h1>
-            <PriceRanges />
         </div>
     )
 }
