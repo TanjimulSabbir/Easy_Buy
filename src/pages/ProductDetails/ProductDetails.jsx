@@ -1,81 +1,150 @@
-import React, { useState } from "react";
-import ReviewCounter from "../../utils/ReviewCounter";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { BsCart3 } from "react-icons/bs";
+import { CiHeart } from "react-icons/ci";
+import { GoPlus } from "react-icons/go";
+import { LuMinus } from "react-icons/lu";
+import { MdOutlinePayment } from "react-icons/md";
 
 export default function ProductDetails({ product }) {
     const {
-        brand: { id: brandId, title: brandTitle },
-        category: { cat, cat_slug, imd, imd_slug, sub, sub_slug },
-        created_at,
-        id,
-        images,
-        marked_price,
-        new_arrival,
-        num_reviews,
-        rating,
-        reviews,
-        selling_price,
-        short_desc,
-        sku,
-        slug,
-        title,
         variants,
-        vendor: { name: vendorName, shop_id: shopId, shop_logo: shopLogo, shop_type: shopType },
-        warranty
+        selling_price,
+        marked_price,
+        short_desc,
+        title,
+        images,
     } = product;
+
     const [quantity, setQuantity] = useState(1);
     const [imagePath, setImagePath] = useState(images[0]);
-    const [color, setColor] = useState(images[0].color)
+    const [stocks, setStocks] = useState(0);
+    const [selectedData, setSelectedData] = useState({
+        color: "",
+        size: "",
+        quantity: 1,
+    });
 
     const handleQuantityChange = (amount) => {
         setQuantity((prevQuantity) => Math.max(prevQuantity + amount, 1));
+        setSelectedData((prevData) => ({ ...prevData, quantity: quantity + amount }));
     };
 
-    const handleImage = ({ imageId, color }) => {
-        const matchedItem = images.find(item => item.index === imageId)
-        if (matchedItem !== -1) {
-            setImagePath(matchedItem)
-            setColor(variants.find(item => item.image === imageId).color)
+    const handleVariant = ({ item, type }) => {
+        if (type == "variant") {
+            setStocks(item.stock);
+            const matchedImageItem = images.find((item) => item.index === item.image);
+            setImagePath(matchedImageItem)
         }
-    }
+        if (type == "image") {
+            const stock = variants.find(item => item.image == item.index).stock;
+            setImagePath(item)
+            setStocks(stock)
+        }
+    };
 
-    console.log(imagePath, "from product details")
+    const handleSizeSelect = (size) => {
+        setSelectedData((prevData) => ({ ...prevData, size }));
+    };
+
+    const handleColorSelect = (color) => {
+        setSelectedData((prevData) => ({ ...prevData, color }));
+    };
+
+    console.log(selectedData); // Log selected size, color, and quantity
+
     return (
-        <div className="flex items-center">
-            <div className="flex items-center">
-                <div className="w-[10%]">
-                    {images.map(item => (<img key={item.index}
-                        onClick={() => handleImage({ imageId: item.index })}
-                        className={`cursor-pointer ${item.thumb === imagePath.thumb && "border border-green-500"}`}
-                        src={`https://api.zonesparks.com${item.thumb}`} alt="" srcSet="" />))}
+        <div className="flex flex-col lg:flex-row items-center lg:items-start">
+            {/* Image Gallery */}
+            <div className="flex flex-col-reverse lg:flex-row items-center">
+                <div className="lg:w-[15%] flex flex-row items-center justify-center lg:flex-col">
+                    {images.map((item) => (
+                        <img
+                            key={item.index}
+                            onClick={() => handleVariant({ item, tpye: 'image' })}
+                            className={`w-[15%] lg:w-auto cursor-pointer transition-opacity duration-150  ${item.thumb === imagePath.thumb ? "border border-green-500 opacity-100" : "opacity-70"} hover:opacity-100`}
+                            src={`https://api.zonesparks.com${item.thumb}`}
+                            alt=""
+                        />
+                    ))}
                 </div>
-                <div className="w-[90%]">
-                    <img src={`https://api.zonesparks.com${imagePath.image}`} alt="" srcSet="" />
+                <div className="w-[80%]">
+                    <img src={`https://api.zonesparks.com${imagePath.image}`} alt="" />
                 </div>
             </div>
-            <div>
-                <div className="p-5 mt-auto">
-                    <h5 className="tracking-tight text-black capitalize">{title}</h5>
-                    <ReviewCounter reviewNum={num_reviews} />
-                    <p className="flex items-center space-x-1 mt-1">
+
+            {/* Product Details */}
+            <div className="w-[95%]">
+                <div className="mt-auto">
+                    <h5 className="text-lg tracking-tight text-black capitalize font-bold mb-3">{title}</h5>
+                    <p className="flex items-center space-x-3 mt-1 text-2xl font-medium">
                         <span>৳{selling_price}</span>
                         {marked_price && <del>৳{marked_price}</del>}
                     </p>
-                    <p>{short_desc}</p>
-                    <h5>Choose Size</h5>
-                    <p>{variants.map(item => item.size)}</p>
+                    <p className="mt-3 font-light whitespace-pre-line">{short_desc}</p>
+                </div>
 
-                    <h5>Choose Color: <span className="lobster-two-bold">{color}</span></h5>
-                    <div className="flex space-x-2">
-                        {variants.map((item, index) => (
-                            <div key={index} title={item.color} className={`w-11 h-11 rounded-xl cursor-pointer ${item.image === imagePath.index && "ring-2 ring-emerald-600"}`} onMouseOver={() => handleImage({ imageId: item.image, color: item.color })} style={{ backgroundColor: item.color }}></div>
-                        ))}
+                <div className="mt-5 space-y-5">
+                    <div>
+                        <div className="flex items-center space-x-7">
+                            <h5 className="font-semibold">Choose Size</h5>
+                            <span className="text-xs text-red-500 cursor-pointer" onClick={() => setSelectedData({
+                                color: "",
+                                size: "",
+                                quantity: 1,
+                            })}>Clear Selection</span>
+                        </div>
+
+                        <div className="flex space-x-2">
+                            {variants.map((item) => (
+                                <p key={item.size} onClick={() => handleSizeSelect(item.size)} className={`inline-block py-1 px-3 border border-dotted border-gray-500 text-black rounded-lg cursor-pointer font-bold ${selectedData.size === item.size && 'bg-gray-200 shadow ring-2 ring-sky-500'}`}>
+                                    {item.size}
+                                </p>
+                            ))}
+                        </div>
                     </div>
+                    <div>
+                        <h5 className="mb-1 font-semibold">Choose Color</h5>
+                        <div className="flex space-x-2">
+                            {variants.map((item) => (
+                                <div
+                                    key={item.color}
+                                    title={item.color}
+                                    className={`w-11 h-11 rounded-xl cursor-pointer ${item.image === imagePath.index && "shadow ring-2 ring-sky-600"}`}
+                                    onMouseOver={() => handleVariant({ item, type: "variant" })}
+                                    onClick={() => handleColorSelect(item.color)}
+                                    style={{ backgroundColor: item.color }}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                    <div>
+                        <h5 className="mb-1 font-semibold">Choose Quantity</h5>
+                        <div className="w-32 inline-flex items-center justify-around py-2 px-3 border border-gray-300">
+                            <LuMinus className="cursor-pointer" onClick={() => handleQuantityChange(-1)} />
+                            <span className="font-semibold">{quantity}</span>
+                            <GoPlus className="cursor-pointer" onClick={() => handleQuantityChange(1)} />
+                        </div>
+                    </div>
+                    <p>Stock {stocks}</p>
+                </div>
 
-                    <h5>Choose Quantity</h5>
-                    <div className="flex items-center space-x-2">
-                        <button onClick={() => handleQuantityChange(-1)}>-</button>
-                        <span>{quantity}</span>
-                        <button onClick={() => handleQuantityChange(1)}>+</button>
+                <div className="mt-7">
+                    <div className="w-full">
+                        <button className="custom-btn cart-btn">
+                            <BsCart3 className="icon" />
+                            <span>Add to cart</span>
+                        </button>
+                    </div>
+                    <div className="flex space-x-5 mt-5">
+                        <button className="custom-btn buy-now-btn">
+                            <MdOutlinePayment className="icon" />
+                            <span>Buy now</span>
+                        </button>
+                        <button className="custom-btn wishlist-btn">
+                            <CiHeart className="icon" />
+                            <span>Add to wishlist</span>
+                        </button>
                     </div>
                 </div>
             </div>

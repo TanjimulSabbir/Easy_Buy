@@ -3,17 +3,18 @@ import { useGetSpecifiedProductQuery } from "../../Redux/Features/Products/produ
 import Loading from "../../UI/Loading";
 import Error from "../../UI/Error";
 import ProductDetails from "./ProductDetails";
+import "../../style/productDetails.css"
 
 export default function ProductDetailsHome() {
     const productId = useParams().id;
     const { data, isLoading, isError, error } = useGetSpecifiedProductQuery(productId);
     let content;
     if (isLoading) content = <Loading />;
-    if (!isLoading && isError || !data.id) content = <Error message="Product(s) not found!" />;
+    if (!isLoading && isError || !data?.id) content = <Error message="Product(s) not found!" />;
 
     return (
-        <div>
-            {data.id ? <>
+        <div className="py-14">
+            {data?.id ? <>
                 <ProductDetails product={data} />
             </> : content}
         </div>
