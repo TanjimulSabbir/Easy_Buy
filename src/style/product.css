@@ -8,3 +8,19 @@
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
     scale: 1.03;
 }
+
+.load-more-btn {
+    color: black;
+    border: 1px solid #b8b7b7;
+    padding: 1rem 2rem;
+    border-radius: 0.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition:all 500ms ease-in-out;
+    width: 30%;
+}
+
+.load-more-btn:hover {
+    color: #fff;
+    background-color: #0071e3;
+}

@@ -4,8 +4,8 @@ import { apiSlice } from "../Api/apiSlice";
 const productApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getProducts: builder.query({
-            query: () => ({
-                url: `/products/`
+            query: (page) => ({
+                url: `/products/?page=${page}`
             })
         }),
         getRelatedProducts: builder.query({

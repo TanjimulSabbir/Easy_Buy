@@ -11,7 +11,7 @@ export default function Product({ product }) {
     const path = useLocation().pathname
     return (
         <div className={`productCard flex flex-grow ${path !== "/" && "mx-3"}`}>
-            <div className="relative bg-white shadow-lg rounded-lg border border-gray-200">
+            <div className="relative bg-white shadow rounded-lg border border-gray-200">
                 <Link to={`/product/${id}`}>
                     <img className="w-full flex items-center justify-center border-b border-gray-300" src={`https://api.zonesparks.com${images[0].thumb}`} alt="" />
                 </Link>
@@ -27,7 +27,7 @@ export default function Product({ product }) {
                         <del>{marked_price}</del>
                     </p>
                 </div>
-                <p className="absolute top-0 left-0 py-1 px-3 bg-red-600 rounded text-white">{new_arrival ? "New" : `Discount ${(marked_price - selling_price) * .1}%`}</p>
+                <p className="absolute top-0 left-0 lobster-two-regular text-xs py-[2px] px-[6px] bg-[#025ab8] rounded-sm text-white">{new_arrival ? "New" : `Discount ${((marked_price - selling_price) * .1).toFixed(0)}%`}</p>
             </div>
         </div>
     )
