@@ -1,8 +1,9 @@
-import { GrFavorite } from 'react-icons/gr';
-import { BsCart3 } from 'react-icons/bs';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import logo from "../../../assets/Logo/icon_logo-B9EY-gHI.svg";
 import Search from './Search';
 import { Link } from 'react-router-dom';
+import { Badge } from '@mui/material';
 
 function Navbar() {
     return (
@@ -16,20 +17,20 @@ function Navbar() {
             <div className="md:max-w-[40%] flex justify-center justify-around space-x-3 md:space-x-7">
                 {/* Favorite */}
                 <div>
-                    <div className="indicator cursor-pointer">
-                        <GrFavorite className='text-xg md:text-3xl font-thin' />
-                        <div className="absolute inline-flex items-center justify-center w-3 h-3 md:w-6 md:h-6 text-xs font-bold text-white bg-blue-500 rounded-full -top-2 -end-2 dark:border-gray-900">8</div>
-                    </div>
+
+                    <Badge badgeContent={4} color="success">
+                        <ShoppingCartRoundedIcon />
+                    </Badge >
                     <p className='text-xs'>wishlist</p>
                 </div>
 
                 {/* Cart */}
                 <div>
                     <Link to="/cart">
-                        <div className="indicator cursor-pointer -mt-3 md:-mt-0">
-                            <BsCart3 className='text-xl md:text-2xl font-thin' />
-                            <div className="absolute inline-flex items-center justify-center w-3 h-3 md:w-6 md:h-6 text-xs font-bold text-white bg-blue-500 rounded-full -top-2 -end-2 dark:border-gray-900">8</div>
-                        </div></Link>
+                        <Badge badgeContent={4} color="success">
+                            <FavoriteBorderIcon />
+                        </Badge>
+                    </Link>
                     <p className='text-xs'>cart</p>
                 </div>
 

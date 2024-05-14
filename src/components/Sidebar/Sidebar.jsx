@@ -1,46 +1,62 @@
-import CategoriesDropDown from '../../utils/CategoriesDropDown'
-import SubCategories from '../../utils/SubCategories'
-import Brand from '../../utils/Brand'
+import CategoriesDropDown from '../../utils/CategoriesDropDown';
+import SubCategories from '../../utils/SubCategories';
+import Brand from '../../utils/Brand';
+import { Accordion, AccordionDetails, AccordionSummary, } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import PriceRanges from '../../utils/PriceRange';
 
 export default function Sidebar() {
     return (
         <div className='w-[20%]'>
-            <div className="collapse collapse-plus">
-                <input type="checkbox" />
-                <div className="collapse-title md:text-xl font-medium">
-                    Categories
-                </div>
-                <div className="collapse-content">
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1-content"
+                    id="panel1-header"
+                >
+                    Category
+                </AccordionSummary>
+                <AccordionDetails>
                     <CategoriesDropDown />
-                </div>
-            </div>
-            <div className="collapse collapse-plus">
-                <input type="checkbox" />
-                <div className="collapse-title md:text-xl font-medium">
-                    Sub Categories
-                </div>
-                <div className="collapse-content">
+                </AccordionDetails>
+            </Accordion>
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1-content"
+                    id="panel1-header"
+                >
+                    Sub_Category
+                </AccordionSummary>
+                <AccordionDetails>
                     <SubCategories />
-                </div>
-            </div>
-            <div tabIndex={0} className="collapse collapse-plus">
-                <input type="checkbox" />
-                <div className="collapse-title md:text-xl font-medium">
+                </AccordionDetails>
+            </Accordion>
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1-content"
+                    id="panel1-header"
+                >
                     Brand
-                </div>
-                <div className="collapse-content">
+                </AccordionSummary>
+                <AccordionDetails>
                     <Brand />
-                </div>
-            </div>
-            <div tabIndex={0} className="collapse collapse-plus">
-                <input type="checkbox" />
-                <div className="collapse-title md:text-xl font-medium">
+                </AccordionDetails>
+            </Accordion>
+            <Accordion>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1-content"
+                    id="panel1-header"
+                >
                     Price Range
-                </div>
-                <div className="collapse-content">
-                    <input type="range" className='range' />
-                </div>
-            </div>
+                </AccordionSummary>
+                <AccordionDetails>
+
+                    <PriceRanges />
+                </AccordionDetails>
+            </Accordion>
         </div>
     )
 }
