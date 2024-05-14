@@ -27,7 +27,7 @@ export default function Cart({ cart }) {
                 <div className="flex-grow max-w-52">
                     <img src={`https://api.zonesparks.com${thumb}`} alt="" className="w-full h-full" />
                 </div>
-                <form className="flex-1 p-6">
+                <div className="flex-1 p-6">
                     <div className="flex flex-wrap items-baseline">
                         <h1 className="w-full flex-none mb-3 text-xl leading-none text-slate-900">
                             {title}
@@ -65,7 +65,7 @@ export default function Cart({ cart }) {
                     <p className="text-sm text-slate-500">
                         Free shipping on all Location in Rajshahi, Bangladesh orders.
                     </p>
-                </form>
+                </div>
             </div>
         </div>
     )

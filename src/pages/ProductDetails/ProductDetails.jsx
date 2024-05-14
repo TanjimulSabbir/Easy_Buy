@@ -154,8 +154,8 @@ export default function ProductDetails({ product }) {
                                     key={item.color}
                                     title={item.color}
                                     className={`w-11 h-11 rounded-xl cursor-pointer ${item.color === selectedData.color && "shadow ring-2 ring-[#025ab8]"}`}
-                                    onMouseOver={() => handleImage(item.image)}
-                                    onClick={() => handleColorSelect(item.color)}
+                                    onMouseOver={() =>{ handleImage(item.image);handleColorSelect(item.color)}}
+                                   
                                     style={{ backgroundColor: item.color }}
                                 />
                             ))}
