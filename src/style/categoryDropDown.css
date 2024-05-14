@@ -4,6 +4,7 @@
     border: 1px solid #dad8d8;
     display: inline-block;
     margin-left: 7px;
+    width: 100%;
 }
 
 .dropMenu {

@@ -1,6 +1,7 @@
 import { useState } from "react";
-
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
+import "../style/categoryDropDown.css"
+import { Link } from "react-router-dom";
 
 export default function Brand() {
   const allCategories = useSelector(state => state.productInfo.allCategories);
@@ -14,12 +15,14 @@ export default function Brand() {
   }
 
   return (
-    <div>
+    <div className="custom-category__main">
       {uniqueBrandTitle?.map((title, index) => {
         return (
-          <div key={title} className="space-x-3" onChange={() => handleBrand(uniqueBrandSlug[index])}>
-            <input className="cursor-pointer" id={title} type="checkbox" />
-            <label  className="cursor-pointer" htmlFor={title}>{title}</label>
+          <div key={title} className="dropMenu" onChange={() => handleBrand()}>
+            <Link to={`#${uniqueBrandSlug[index]}`} className="space-x-3">
+              <input className="cursor-pointer" id={title} type="checkbox" />
+              <label className="cursor-pointer" htmlFor={title}>{title}</label>
+            </Link>
           </div>
         )
       })}

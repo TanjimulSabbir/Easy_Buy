@@ -4,8 +4,10 @@ import logo from "../../../assets/Logo/icon_logo-B9EY-gHI.svg";
 import Search from './Search';
 import { Link } from 'react-router-dom';
 import { Badge } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 function Navbar() {
+    const cartsData = useSelector(state => state.productInfo.carts);
     return (
         <div className="w-full p-3 flex items-center bg-sky-200">
             <div className="flex flex-1 items-center">
@@ -18,7 +20,7 @@ function Navbar() {
                 {/* Favorite */}
                 <div>
 
-                    <Badge badgeContent={4} color="success">
+                    <Badge badgeContent={0} color="success">
                         <ShoppingCartRoundedIcon />
                     </Badge >
                     <p className='text-xs'>wishlist</p>
@@ -27,7 +29,7 @@ function Navbar() {
                 {/* Cart */}
                 <div>
                     <Link to="/cart">
-                        <Badge badgeContent={4} color="success">
+                        <Badge badgeContent={cartsData?.length || 0} color="success">
                             <FavoriteBorderIcon />
                         </Badge>
                     </Link>

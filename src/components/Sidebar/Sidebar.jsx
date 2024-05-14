@@ -9,55 +9,15 @@ import { useState } from 'react';
 export default function Sidebar() {
     const [open, setOpen] = useState(false)
     return (
-        <div className='w-[20%] hidden lg:block'>
-            <Accordion>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                >
-                    Category
-                </AccordionSummary>
-                <AccordionDetails>
-                    <CategoriesDropDown />
-                </AccordionDetails>
-            </Accordion>
-            <Accordion>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                >
-                    Sub_Category
-                </AccordionSummary>
-                <AccordionDetails>
-                    <SubCategories />
-                </AccordionDetails>
-            </Accordion>
-            <Accordion>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                >
-                    Brand
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Brand />
-                </AccordionDetails>
-            </Accordion>
-            <Accordion>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                >
-                    Price Range
-                </AccordionSummary>
-                <AccordionDetails>
-                    <PriceRanges />
-                </AccordionDetails>
-            </Accordion>
+        <div>
+            <h1 className='my-4 text-center text-lg font-bold'>Category</h1>
+            <CategoriesDropDown />
+            <h1 className='my-4 text-center text-lg font-bold'>SubCategory</h1>
+            <SubCategories />
+            <h1 className='my-4 text-center text-lg font-bold'>Brand</h1>
+            <Brand />
+            <h1 className='my-4 text-center text-lg font-bold'>Price</h1>
+            <PriceRanges />
         </div>
     )
 }

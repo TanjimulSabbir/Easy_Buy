@@ -11,20 +11,22 @@ import { useLocation } from "react-router-dom";
 
 export default function Products() {
     const [productPages, setProductPages] = useState(1);
-    const [showProduct, setShowProduct] = useState([])
-    const { data: allProducts, isLoading, isError, isFetching } = useGetProductsQuery(productPages);
+    const [showProduct, setShowProduct] = useState([]);
+    const [totalPage, setTotalPage] = useState(1);
+    const { data: allProducts, isLoading: allProductsLoading, isError: allProductsError, isFetching: allProductsFetching } = useGetProductsQuery(productPages);
 
-    const filterKeyword = useLocation().hash.split("#")[1];
-    const { data: filteredProducts, isLoading: filterLoading, isError: filterError, isFetching: filterFetching } = useGetFilteredProductsQuery(filterKeyword, { skip: !filterKeyword });
+    const filterKeyword = useLocation().hash.split("=")[1];
+    const { data: filteredProducts, isLoading: filteredProductsLoading, isError: filteredProductsError, isFetching: filteredProductsFetching } = useGetFilteredProductsQuery(filterKeyword, { skip: !filterKeyword });
 
     const dispatch = useDispatch();
 
     let content;
-    if (isLoading) content = <Loading />;
-    if (!isLoading && isError) content = <Error message="Product(s) not found!" />;
-
-    if (!isLoading && !isError && showProduct?.length > 0) {
-        content = showProduct.map(product => <Product key={product.id} product={product} />)
+    if (allProductsLoading || filteredProductsLoading) {
+        content = <Loading />;
+    } else if (allProductsError || filteredProductsError || showProduct?.length <= 0) {
+        content = <Error message="Product(s) not found!" />;
+    } else if (showProduct.length > 0) {
+        content = showProduct.map(product => <Product key={product.id} product={product} />);
     }
 
     const handlePagination = (event, value) => {
@@ -32,17 +34,20 @@ export default function Products() {
     }
     useEffect(() => {
         if (allProducts?.products?.length > 0) {
-            setShowProduct(allProducts?.products)
-            const subCategories = allProducts?.products?.map(product => ({ brand: product.brand, category: product.category }));
+            setTotalPage(allProducts.pages)
+            setShowProduct(allProducts.products)
+            const subCategories = allProducts.products?.map(product => ({ brand: product.brand, category: product.category }));
             dispatch(addAllCategories(subCategories))
         }
-        if (filterKeyword) {
-            setShowProduct(filteredProducts?.products)
-            const subCategories = filteredProducts?.products?.map(product => ({ brand: product.brand, category: product.category }));
+        if (filterKeyword && filteredProducts?.products?.length > 0) {
+            setTotalPage(filteredProducts.pages)
+            setShowProduct(filteredProducts.products)
+            const subCategories = filteredProducts.products.map(product => ({ brand: product.brand, category: product.category }));
             dispatch(addAllCategories(subCategories))
         }
     }, [allProducts?.products, filterKeyword])
 
+    console.log(showProduct, "showProducts");
     return (
         <div className="pb-20">
             <div className="flex">
@@ -53,7 +58,7 @@ export default function Products() {
 
             </div>
             <div className="flex items-center justify-center mt-20">
-                {isLoading || isFetching ? <Loading /> : <PaginationRounded totalPages={showProduct?.pages} currentPage={productPages} handlePagination={handlePagination} />}
+                {allProductsLoading || allProductsFetching || filteredProductsLoading || filteredProductsFetching ? <Loading /> : <PaginationRounded totalPages={totalPage} currentPage={productPages} handlePagination={handlePagination} />}
             </div>
         </div>
     )
