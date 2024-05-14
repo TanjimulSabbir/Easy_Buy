@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import toast from "react-hot-toast";
-import GetQuantity from "../../utils/getQuantity";
+import GetQuantity from "../../utils/GetQuantity";
 
 export default function Cart({ cart }) {
     const { productId, title, selling_price, stock, imagePath: { id, product, image, thumb, index, variant_id }, color, size, quantity } = cart;
