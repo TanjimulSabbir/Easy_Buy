@@ -4,10 +4,12 @@ import Brand from '../../utils/Brand';
 import { Accordion, AccordionDetails, AccordionSummary, } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import PriceRanges from '../../utils/PriceRange';
+import { useState } from 'react';
 
 export default function Sidebar() {
+    const [open, setOpen] = useState(false)
     return (
-        <div className='w-[20%]'>
+        <div className='w-[20%] hidden lg:block'>
             <Accordion>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
@@ -53,7 +55,6 @@ export default function Sidebar() {
                     Price Range
                 </AccordionSummary>
                 <AccordionDetails>
-
                     <PriceRanges />
                 </AccordionDetails>
             </Accordion>

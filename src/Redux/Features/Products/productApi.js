@@ -19,8 +19,8 @@ const productApi = apiSlice.injectEndpoints({
             })
         }),
         getFilteredProducts: builder.query({
-            query: () => ({
-                url: `/products/`
+            query: (keyword) => ({
+                url: `/products/${keyword}`
             })
         })
     })
