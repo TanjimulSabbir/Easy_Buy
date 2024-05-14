@@ -1,16 +1,11 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { BsCart3 } from "react-icons/bs";
-import { CiHeart } from "react-icons/ci";
-import { GoPlus } from "react-icons/go";
 import { IoBagOutline, IoHeartOutline } from "react-icons/io5";
-import { LuMinus } from "react-icons/lu";
-import { MdOutlinePayment } from "react-icons/md";
 import { PiShoppingBagOpenBold, PiStorefrontThin } from "react-icons/pi";
 import ReviewCounter from "../../utils/ReviewCounter";
 import { useDispatch } from "react-redux";
 import { addUserCart } from "../../Redux/Features/Products/productSlice";
-import GetQuantity from "../../utils/getQuantity";
+import GetQuantity from "../../utils/GetQuantity";
 
 export default function ProductDetails({ product }) {
     const { id,
