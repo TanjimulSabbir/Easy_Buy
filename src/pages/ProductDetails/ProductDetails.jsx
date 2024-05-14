@@ -44,6 +44,7 @@ export default function ProductDetails({ product }) {
         }
 
         setQuantity(newQuantity);
+        setSelectedData(prev => ({ ...prev, quantity: newQuantity }))
     };
 
     const handleImage = (imageId) => {

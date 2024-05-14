@@ -8,7 +8,7 @@ export default function Cart({ cart }) {
 
     const [Quantity, setQuantity] = useState(quantity)
     const handleQuantityChange = (amount) => {
-        const newQuantity = quantity + amount;
+        const newQuantity = Quantity + amount;
 
         if (newQuantity <= 0) {
             return;
@@ -18,7 +18,6 @@ export default function Cart({ cart }) {
             toast.error("Oops! Exceeds available stock.");
             return;
         }
-
         setQuantity(newQuantity);
     };
     // <img  alt="" width="auto" height="auto" 
