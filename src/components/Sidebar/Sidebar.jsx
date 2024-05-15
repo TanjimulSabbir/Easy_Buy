@@ -3,6 +3,7 @@ import SubCategories from '../../utils/SubCategories';
 import Brand from '../../utils/Brand';
 import { useState } from 'react';
 import WidgetsOutlinedIcon from '@mui/icons-material/WidgetsOutlined';
+import { Drawer } from '@mui/material';
 
 export default function Sidebar() {
     const [open, setOpen] = useState(false);
