@@ -86,7 +86,7 @@ export default function Products() {
             </div>
             <div className="flex">
                 <Sidebar />
-                <div className="mt-7 w-[75%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-stretch gap-7 mx-auto">
+                <div className="mt-7 w-[75%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-stretch gap-7 mx-auto lg:px-3">
                     {content}
                 </div>
             </div>

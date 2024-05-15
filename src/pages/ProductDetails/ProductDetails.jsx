@@ -72,7 +72,7 @@ export default function ProductDetails({ product }) {
         }
         if (notSelected.length === 0) {
             dispatch(addUserCart({ productId: id, title, selling_price, stock, imagePath, ...selectedData }));
-            toast.success('Product added to cart successfully!')
+            toast.success('Product added to cart!')
         } else {
             toast.error(`${notSelected.map(item => item).join(" & ")} not selected!`)
         }
