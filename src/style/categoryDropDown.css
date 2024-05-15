@@ -45,3 +45,30 @@
 .dropMenu a span {
     margin-left: 11px;
 }
+
+.dropMenu p {
+    display: flex;
+    align-items: center;
+    padding: 7px 15px 7px 11px;
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+.dropMenu p svg {
+    color: #0d6efd;
+    transition: all 100ms;
+}
+
+.dropMenu p span {
+    margin-left: 11px;
+    cursor: pointer;
+}
+
+.active-item {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.active-item>svg {
+    fill: white;
+}

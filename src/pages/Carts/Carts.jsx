@@ -11,7 +11,7 @@ export default function Carts() {
         content = <Error message="No Cart Found!" />
     }
     return (
-        <div className="py-10 w-1/2 mx-auto space-y-10">
+        <div className="py-10 md:w-1/2 mx-auto space-y-10">
             {content}
         </div>
     )

@@ -1,28 +1,29 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "../style/categoryDropDown.css"
-import { Link } from "react-router-dom";
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import { addFilteringPath } from "../Redux/Features/Products/productSlice";
+import toast from "react-hot-toast";
 
 export default function Brand() {
-  const allCategories = useSelector(state => state.productInfo.allCategories);
+  const { allCategories, searchPath } = useSelector(state => state.productInfo);
   const filterBrandCategory = allCategories?.map(category => category.brand);
-  const uniqueBrandTitle = [...new Set(filterBrandCategory?.map(item => item.title))]
+  const uniqueBrandTitle = [...new Set(filterBrandCategory?.map(item => item.title))];
   const uniqueBrandSlug = [...new Set(filterBrandCategory?.map(item => item.slug))];
-  const [brand, setBrand] = useState("")
+  const dispatch = useDispatch();
 
-  const handleBrand = (keyword) => {
-    setBrand((prev) => prev === keyword ? "" : keyword);
+  const handleBrand = (data) => {
+    dispatch(addFilteringPath(`brand=${data}`))
   }
-
+  const paths = searchPath.map(item => item.split("=")[1])
   return (
-    <div className="custom-category__main">
+    <div className="custom-category__main text-xs sm:text-base">
       {uniqueBrandTitle?.map((title, index) => {
         return (
-          <div key={title} className="dropMenu" onChange={() => handleBrand()}>
-            <Link to={`#${uniqueBrandSlug[index]}`} className="space-x-3">
-              <input className="cursor-pointer" id={title} type="checkbox" />
-              <label className="cursor-pointer" htmlFor={title}>{title}</label>
-            </Link>
+          <div key={title} className="dropMenu">
+            <p onClick={() => handleBrand(uniqueBrandSlug[index])} className={`space-x-3 ${paths.includes(uniqueBrandSlug[index]) && "active-item"}`}>
+              <DragIndicatorIcon />
+              <span className="cursor-pointer">{title}</span>
+            </p>
           </div>
         )
       })}

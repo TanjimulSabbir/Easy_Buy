@@ -1,5 +1,5 @@
-import { GoPlus } from 'react-icons/go'
-import { LuMinus } from 'react-icons/lu'
+import { GoPlus } from 'react-icons/go';
+import { LuMinus } from 'react-icons/lu';
 
 export default function GetQuantity({ quantity, handleQuantityChange }) {
     return (

@@ -8,10 +8,10 @@ export default function Product({ product }) {
     const { id, brand: { slug: brandSlug, title: brandTitle }, category: { cat, cat_slug, sub, sub_slug, imd, imd_slug }, slug, title, images, marked_price, new_arrival, num_reviews, rating, selling_price, variants
     } = product;
 
-    const path = useLocation().pathname
+    const path = useLocation().pathname;
     return (
         <div className={`productCard flex flex-grow ${path !== "/" && "mx-3"}`}>
-            <div className="relative bg-white shadow rounded-lg border border-gray-200">
+            <div className="w-full relative bg-white shadow rounded-lg border border-gray-200">
                 <Link to={`/product/${id}`}>
                     <img className="w-full flex items-center justify-center border-b border-gray-300" src={`https://api.zonesparks.com${images[0].thumb}`} alt="" />
                 </Link>

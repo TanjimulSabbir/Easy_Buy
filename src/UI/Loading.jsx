@@ -2,7 +2,7 @@ import "../style/Loading.css"
 
 function Loading() {
     return (
-        <div className="flex items-center justify-center">
+        <div className="absolute inset-0 w-full h-screen flex items-center justify-center bg-black bg-opacity-85 z-50">
             <p className="loader"></p>
         </div>
     )

@@ -11,7 +11,7 @@ export default function ProductDetailsHome() {
     const { data, isLoading, isError, error } = useGetSpecifiedProductQuery(productId);
     let content;
     if (isLoading) content = <Loading />;
-    if (!isLoading && isError || !data?.id) content = <Error message="Product(s) not found!" />;
+    if (!isLoading && isError) content = <Error message="Product(s) not found!" />;
 
     return (
         <div className="py-14">

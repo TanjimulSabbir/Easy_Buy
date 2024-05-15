@@ -23,8 +23,8 @@ export default function Cart({ cart }) {
     // <img  alt="" width="auto" height="auto" 
     return (
         <div>
-            <div className="flex shadow border border-slate-200">
-                <div className="flex-grow max-w-52">
+            <div className="flex shadow border border-slate-200 text-sm md:text-base">
+                <div className="flex-grow max-w-28 md:max-w-52">
                     <img src={`https://api.zonesparks.com${thumb}`} alt="" className="w-full h-full" />
                 </div>
                 <div className="flex-1 p-6">

@@ -1,18 +1,15 @@
 import Slider from "react-slick";
-import Loading from "../../UI/Loading";
 import Error from "../../UI/Error";
 import { useGetRelatedProductsQuery } from "../../Redux/Features/Products/productApi";
 import Product from "../../components/Home/Products/Product/Product";
 import { GiveTitle } from "../../utils/GiveTitle";
+import LoadingInline from "../../UI/LoadingInLine";
 export default function RelatedProducts({ id }) {
     const { data, isLoading, isError, error } = useGetRelatedProductsQuery(id);
     let content;
-    if (isLoading) content = <Loading />;
+    if (isLoading) content = <LoadingInline />;
     if (!isLoading && isError || !data?.products?.length === 0) content = <Error message="Product(s) not found!" />;
 
-    console.log('====================================');
-    console.log(data, "related products");
-    console.log('====================================');
     var settings = {
         dots: true,
         infinite: true,
