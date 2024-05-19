@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAllCategories, addFilteringPath } from "../../../Redux/Features/Products/productSlice";
 import { useLocation } from "react-router-dom";
 import LoadingInline from "../../../UI/LoadingInLine";
-import { Button, Chip } from "@mui/material";
+import { Button } from "@mui/material";
 import { FaRegTrashCan } from "react-icons/fa6";
 
 export default function Products() {
@@ -24,9 +24,9 @@ export default function Products() {
         filterPath = searchPath.map(item => item).join("&");
     }
     if (categoryPath) {
-        filterPath = `${categoryPath}&${filterPath}`
+        filterPath = `${categoryPath}&${filterPath}&page=${productPages}`
     } else {
-        filterPath = filterPath && `?${filterPath}`
+        filterPath = filterPath && `?${filterPath}&page=${productPages}`
     }
 
     const { data: allProducts, isLoading: allProductsLoading, isError: allProductsError, isFetching: allProductsFetching } = useGetProductsQuery(productPages, { skip: filterPath });

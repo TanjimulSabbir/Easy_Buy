@@ -34,7 +34,7 @@ export default function Cart({ cart }) {
                         </h1>
                         <div className="flex items-center space-x-5">
                             <div className="flex-auto font-medium text-slate-800">
-                                Price:  <span className="">৳{selling_price}</span>
+                                Price:  <span className="">৳{(selling_price * Quantity).toFixed(2)}</span>
                             </div>
                             <div className="flex-auto font-medium text-slate-800">
                                 Size: <span className=""> {size}</span>
