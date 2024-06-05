@@ -33,9 +33,10 @@ Local Address: [http://localhost:5173/](http://localhost:5173/)
 ### Steps
 
 1. **Clone the Repository**:
-   ```sh
+```sh
    git clone https://github.com/TanjimulSabbir/easy-buy.git
    cd easy-buy
+```
 2. **Install Dependencies**:
 ```sh
    npm install 
