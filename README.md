@@ -80,5 +80,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 For any inquiries or feedback, please contact me at:
 
 - **Email**: [tanjimulsabbir.dev@gmail.com](mailto:tanjimulsabbir.dev@gmail.com)
-- **Twitter**: [@yourtwitterhandle](https://twitter.com/yourtwitterhandle)
-- **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/yourlinkedinhandle)
+- **Twitter**: [@TanjimulSabbir](https://twitter.com/TanjimulSabbir)
+- **LinkedIn**: [TanjimulSabbir](https://linkedin.com/in/TanjimulSabbir)
