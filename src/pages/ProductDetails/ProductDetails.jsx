@@ -100,7 +100,7 @@ export default function ProductDetails({ product }) {
             </div>
 
             {/* Product Details */}
-            <div className="w-full px-7 lg:px-0">
+            <div className="rightSlider w-full px-7 lg:px-0">
                 <div>
                     <h5 className="text-lg tracking-tight text-black capitalize font-bold mb-3">{title}</h5>
                     <p className="flex items-center space-x-3 mt-1 text-2xl font-medium">
@@ -111,7 +111,7 @@ export default function ProductDetails({ product }) {
                     <p className="mt-3 font-light whitespace-pre-line">{short_desc}</p>
                 </div>
 
-                <div className="rightSlider mt-5 space-y-5">
+                <div className="mt-5 space-y-5">
                     <div>
                         <div className="flex items-center space-x-7">
                             <h5 className="font-semibold">Choose Size</h5>
@@ -165,7 +165,7 @@ export default function ProductDetails({ product }) {
                         <span> Stock {stock}</span></p>
                 </div>
 
-                <div className="mt-7">
+                <div className="downSlider mt-7">
                     <div className="w-full" onClick={handleCart}>
                         <button className="custom-btn cart-btn">
                             <IoBagOutline className="icon" />
