@@ -1,6 +1,6 @@
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
-import logo from "../../../assets/Logo/icon_logo-B9EY-gHI.svg";
+import logo from "../../../assets/Logo/EasyBuy.png";
 import Search from './Search';
 import { Link } from 'react-router-dom';
 import { Badge } from '@mui/material';

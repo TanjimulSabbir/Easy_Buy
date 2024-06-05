@@ -25,7 +25,7 @@ export default function Cart({ cart }) {
         <div>
             <div className="flex shadow border border-slate-200 text-sm md:text-base">
                 <div className="flex-grow max-w-28 md:max-w-52">
-                    <img src={`https://api.zonesparks.com${thumb}`} alt="" className="w-full h-full" />
+                    <img src={`https://zonesparks.com/_next/image?url=https%3A%2F%2Fzsb-production-files20240521083459186300000001.s3.amazonaws.com%2Fproduct_image%2F${thumb.split("/media/product_image/")[1]}&w=384&q=75`} alt="" className="w-full h-full" />
                 </div>
                 <div className="flex-1 p-6">
                     <div className="flex flex-wrap items-baseline">

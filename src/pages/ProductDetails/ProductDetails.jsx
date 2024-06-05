@@ -89,13 +89,13 @@ export default function ProductDetails({ product }) {
                             key={item.index}
                             onClick={() => handleImage(item.index)}
                             className={`w-[15%] lg:w-full cursor-pointer transition-opacity duration-150  ${item.thumb === imagePath.thumb ? "border border-green-500 opacity-100" : "opacity-70"} hover:opacity-100`}
-                            src={`https://api.zonesparks.com${item.thumb}`}
+                            src={`https://zonesparks.com/_next/image?url=https%3A%2F%2Fzsb-production-files20240521083459186300000001.s3.amazonaws.com%2Fproduct_image%2F${item.thumb.split("/media/product_image/")[1]}&w=384&q=75`}
                             alt=""
                         />
                     ))}
                 </div>
                 <div className="w-[80%] mx-auto">
-                    <img src={`https://api.zonesparks.com${imagePath.image}`} alt="" />
+                    <img src={`https://zsb-production-files20240521083459186300000001.s3.amazonaws.com${imagePath.image.split("/media")[1]}`} alt="" />
                 </div>
             </div>
 
@@ -149,8 +149,8 @@ export default function ProductDetails({ product }) {
                                     key={item.color}
                                     title={item.color}
                                     className={`w-11 h-11 rounded-xl cursor-pointer ${item.color === selectedData.color && "shadow ring-2 ring-[#025ab8]"}`}
-                                    onMouseOver={() =>{ handleImage(item.image);handleColorSelect(item.color)}}
-                                   
+                                    onMouseOver={() => { handleImage(item.image); handleColorSelect(item.color) }}
+
                                     style={{ backgroundColor: item.color }}
                                 />
                             ))}
