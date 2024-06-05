@@ -38,11 +38,11 @@ Local Address: [http://localhost:5173/](http://localhost:5173/)
    cd easy-buy
 2. **Install Dependencies**:
 ```sh
-npm install
+   npm install 
 ```
 3. **Run the Application**:
 ```sh
-npm run dev
+  npm run dev
 ```
 
 ## Usage
