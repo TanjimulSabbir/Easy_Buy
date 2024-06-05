@@ -88,13 +88,13 @@ export default function ProductDetails({ product }) {
                         <img
                             key={item.index}
                             onClick={() => handleImage(item.index)}
-                            className={`w-[15%] lg:w-full cursor-pointer transition-opacity duration-150  ${item.thumb === imagePath.thumb ? "border border-green-500 opacity-100" : "opacity-70"} hover:opacity-100`}
+                            className={`fade-in w-[15%] lg:w-full cursor-pointer transition-opacity duration-150  ${item.thumb === imagePath.thumb ? "border border-green-500 opacity-100" : "opacity-70"} hover:opacity-100`}
                             src={`https://zonesparks.com/_next/image?url=https%3A%2F%2Fzsb-production-files20240521083459186300000001.s3.amazonaws.com%2Fproduct_image%2F${item.thumb.split("/media/product_image/")[1]}&w=384&q=75`}
                             alt=""
                         />
                     ))}
                 </div>
-                <div className="w-[80%] mx-auto">
+                <div className="topSlider w-[80%] mx-auto">
                     <img src={`https://zsb-production-files20240521083459186300000001.s3.amazonaws.com${imagePath.image.split("/media")[1]}`} alt="" />
                 </div>
             </div>
@@ -111,7 +111,7 @@ export default function ProductDetails({ product }) {
                     <p className="mt-3 font-light whitespace-pre-line">{short_desc}</p>
                 </div>
 
-                <div className="mt-5 space-y-5">
+                <div className="rightSlider mt-5 space-y-5">
                     <div>
                         <div className="flex items-center space-x-7">
                             <h5 className="font-semibold">Choose Size</h5>

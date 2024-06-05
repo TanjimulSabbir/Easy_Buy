@@ -4,6 +4,7 @@ import Brand from '../../utils/Brand';
 import { useState } from 'react';
 import WidgetsOutlinedIcon from '@mui/icons-material/WidgetsOutlined';
 import { Drawer } from '@mui/material';
+import "../../style/animation.css"
 
 export default function Sidebar() {
     const [open, setOpen] = useState(false);
@@ -12,7 +13,7 @@ export default function Sidebar() {
         setOpen(newOpen);
     };
     return (
-        <div className="relative">
+        <div className="leftSlider relative">
             <div className='hidden lg:block w-[270px]'>
                 <h1 className='pb-3 -mt-3 text-center text-lg font-bold'>Category</h1>
                 <CategoriesDropDown />

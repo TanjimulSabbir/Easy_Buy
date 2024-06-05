@@ -5,19 +5,20 @@ import Search from './Search';
 import { Link } from 'react-router-dom';
 import { Badge } from '@mui/material';
 import { useSelector } from 'react-redux';
+import "../../../style/animation.css"
 
 function Navbar() {
     const cartsData = useSelector(state => state.productInfo.carts);
     return (
         <div className="w-full p-3 flex items-center bg-sky-200">
-            <div className="flex flex-1 items-center">
+            <div className="leftSlider flex flex-1 items-center">
                 <Link to="/">
                     <img className='hidden lg:block' src={logo} alt="" srcSet="" /></Link>
                 <Search />
             </div>
 
 
-            <div className="lg:max-w-[40%] flex justify-center justify-around space-x-3 lg:space-x-7">
+            <div className="rightSlider lg:max-w-[40%] flex justify-center justify-around space-x-3 lg:space-x-7">
                 {/* Favorite */}
                 <div>
                     <Badge badgeContent={0} color="success">
